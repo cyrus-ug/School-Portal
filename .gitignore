@@ -1,0 +1,268 @@
+# ==========================================
+# School Portal - Comprehensive .gitignore
+# ==========================================
+
+# ==========================================
+# Operating System Files
+# ==========================================
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+$RECYCLE.BIN/
+
+# ==========================================
+# Node.js / NPM
+# ==========================================
+node_modules/
+npm-debug.log*
+npm-debug.log
+yarn-error.log*
+yarn-debug.log*
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+.pnpm-store/
+
+# ==========================================
+# Python
+# ==========================================
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+venv/
+ENV/
+env/
+.venv
+
+# ==========================================
+# IDE / Editor Configuration
+# ==========================================
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.sublime-project
+.sublime-workspace
+.project
+.pydevproject
+.settings/
+*.iml
+*.iws
+*.ipr
+.classpath
+.c9/
+*.launch
+.metadata
+local.properties
+
+# ==========================================
+# Build Artifacts & Dependencies
+# ==========================================
+dist/
+build/
+*.o
+*.a
+*.lib
+*.dll
+*.exe
+*.out
+*.app
+*.jar
+*.war
+*.ear
+
+# ==========================================
+# Log Files & Temporary Files
+# ==========================================
+logs/
+log/
+*.log
+*.log.*
+tmp/
+temp/
+*.tmp
+*.temp
+*.bak
+*.bak.*
+*.old
+*.swp
+*.swo
+*.sublime-workspace
+
+# ==========================================
+# Environment Variables & Secrets
+# ==========================================
+.env
+.env.local
+.env.*.local
+.env.production.local
+.env.development.local
+.env.test.local
+config/secrets.json
+secrets.yml
+credentials.json
+aws_credentials
+
+# ==========================================
+# Database Files
+# ==========================================
+*.db
+*.sqlite
+*.sqlite3
+*.db-journal
+*.db-wal
+dump.rdb
+
+# ==========================================
+# Cache Files
+# ==========================================
+.cache/
+.pytest_cache/
+.eslintcache
+.stylelintcache
+.bundle/
+.sass-cache/
+*.cache
+
+# ==========================================
+# OS-specific files
+# ==========================================
+.DS_Store
+.AppleDouble
+.LSOverride
+*.lnk
+.vscode-settings
+
+# ==========================================
+# Backup & Archive Files
+# ==========================================
+*.backup
+*.bkp
+*.bz2
+*.gz
+*.rar
+*.tar
+*.zip
+*.7z
+
+# ==========================================
+# IDE Debug Files
+# ==========================================
+.vscode/launch.json
+.vscode/settings.json
+debug.log
+debugger.log
+
+# ==========================================
+# OS Files
+# ==========================================
+.vscode/settings.json
+.vscode/launch.json
+.vscode/extensions.json
+*.code-workspace
+
+# ==========================================
+# Demo & Test Data (Keep if needed)
+# ==========================================
+demo_data/
+test_files/
+sample_uploads/
+temp_uploads/
+
+# ==========================================
+# Deprecated Code
+# ==========================================
+deprecated/
+old_code/
+archive/
+
+# ==========================================
+# Documentation (Keep important docs)
+# ==========================================
+*.tmp.md
+temp_docs/
+
+# ==========================================
+# Testing & Coverage
+# ==========================================
+coverage/
+.nyc_output/
+htmlcov/
+.coverage
+.pytest_cache/
+.tox/
+
+# ==========================================
+# Docker (if used)
+# ==========================================
+.dockerignore
+docker-compose.override.yml
+
+# ==========================================
+# Package Manager Artifacts
+# ==========================================
+Gemfile.lock
+Pipfile.lock
+poetry.lock
+mix.lock
+
+# ==========================================
+# Compiler & Build Output
+# ==========================================
+*.class
+*.o
+*.obj
+*.out
+*.so
+*.dylib
+*.dll
+*.exe
+
+# ==========================================
+# IDE Workspace Files
+# ==========================================
+.idea/workspace.xml
+.idea/tasks.xml
+.idea/vcs.xml
+.idea/projectCodeStyle.xml
+
+# ==========================================
+# Version Control Merge Files
+# ==========================================
+*.orig
+*.rej
+
+# ==========================================
+# System Files
+# ==========================================
+*~
+*.swp
+*.swo
+\#*#
+.#*
