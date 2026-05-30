@@ -9,7 +9,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if (!empty($email) && !empty($password)) {
         try {
-            $stmt = $pdo->prepare('SELECT id, tenant_id, password_hash, name FROM users WHERE email = ? AND deleted_at IS NULL');
+            $stmt = $pdo->prepare('SELECT id, tenant_id, password_hash, name, role FROM users WHERE email = ? AND deleted_at IS NULL');
             $stmt->execute([$email]);
             $user = $stmt->fetch();
 
@@ -17,6 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $_SESSION['user_id'] = $user['id'];
                 $_SESSION['tenant_id'] = $user['tenant_id'];
                 $_SESSION['user_name'] = $user['name'];
+                $_SESSION['user_role'] = $user['role'];
                 header('Location: dashboard.php');
                 exit;
             } else {

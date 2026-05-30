@@ -67,7 +67,7 @@ try {
                     <span>📊</span>
                     <span>Dashboard</span>
                 </a>
-                <a href="#" class="w-full flex items-center gap-3 px-4 py-2 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">
+                <a href="students.php" class="w-full flex items-center gap-3 px-4 py-2 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">
                     <span>👥</span>
                     <span>Students</span>
                 </a>
@@ -79,6 +79,18 @@ try {
                     <span>📋</span>
                     <span>Requirements</span>
                 </a>
+                <?php if (hasPermission('manage_users')): ?>
+                    <a href="users.php" class="w-full flex items-center gap-3 px-4 py-2 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">
+                        <span>🔑</span>
+                        <span>Users & Roles</span>
+                    </a>
+                <?php endif; ?>
+                <?php if (hasPermission('manage_settings')): ?>
+                    <a href="#" class="w-full flex items-center gap-3 px-4 py-2 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">
+                        <span>⚙️</span>
+                        <span>Settings</span>
+                    </a>
+                <?php endif; ?>
                 <a href="#" class="w-full flex items-center gap-3 px-4 py-2 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">
                     <span>⚙️</span>
                     <span>Settings</span>
@@ -113,7 +125,7 @@ try {
                 <div class="flex items-center justify-between">
                     <div>
                         <h1 class="text-2xl font-bold">Dashboard</h1>
-                        <p class="text-slate-600 dark:text-slate-400 text-sm mt-1">Welcome back, <?php echo htmlspecialchars($_SESSION['user_name']); ?></p>
+                        <p class="text-slate-600 dark:text-slate-400 text-sm mt-1">Welcome back, <?php echo htmlspecialchars($_SESSION['user_name']); ?> • <span class="<?php echo getRoleColor(getCurrentUserRole()); ?> px-2 py-1 rounded-full text-xs font-semibold inline-block"><?php echo getRoleLabel(getCurrentUserRole()); ?></span></p>
                     </div>
                     <div class="flex items-center gap-4">
                         <span class="text-sm text-slate-600 dark:text-slate-400">Last login: <?php echo date('M d, Y H:i'); ?></span>

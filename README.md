@@ -86,9 +86,17 @@ Default test user (created by schema.sql):
 
 ```
 ├── config.php              # Database connection & session management
+├── rbac.php                # Role-based access control functions
 ├── login.php               # Authentication form
 ├── dashboard.php           # Main dashboard with sidebar
 ├── logout.php              # Session termination
+├── students.php            # Student list with search & filters
+├── add-student.php         # Create new student
+├── edit-student.php        # Edit student details
+├── view-student.php        # Student profile & detail view
+├── users.php               # User management (admin only)
+├── add-user.php            # Create new user with role (admin only)
+├── edit-user.php           # Edit user & role (admin only)
 ├── schema.sql              # Database schema
 ├── .env.example            # Environment variables template
 └── README.md               # This file
@@ -193,6 +201,9 @@ if (!isAuthenticated()) {
     exit;
 }
 
+// Check specific permission
+requirePermission('permission_name');
+
 $tenantId = getCurrentTenantId();
 // Your logic here
 ?>
@@ -200,6 +211,122 @@ $tenantId = getCurrentTenantId();
 
 3. Use Tailwind classes for styling
 4. Implement dark mode support
+
+## Role-Based Access Control (RBAC)
+
+### Architecture
+
+The RBAC system is implemented via [rbac.php](rbac.php) and provides role-based permission checking across the entire platform.
+
+### Roles & Permissions
+
+**Administrator**
+- Full system access
+- Manage users and roles
+- Configure school settings
+- View all analytics
+- Manage all students and courses
+
+**Staff**
+- Manage student records
+- Create and manage courses
+- Manage course requirements
+- View analytics
+
+**Teacher**
+- View assigned students
+- Create assignments and exams
+- Grade student work
+- View class analytics
+
+**Student**
+- View own profile
+- View enrolled courses
+- Submit assignments
+- View grades
+
+### RBAC Functions
+
+`rbac.php` provides helper functions to check permissions:
+
+#### Check Current User Role
+```php
+$role = getCurrentUserRole();
+if (hasRole('admin')) {
+    // Admin-only logic
+}
+```
+
+#### Check Permission
+```php
+if (hasPermission('manage_students')) {
+    // Can manage students
+}
+```
+
+#### Require Permission (Redirect if unauthorized)
+```php
+requirePermission('manage_users');  // Redirects to dashboard.php if not authorized
+requirePermission('manage_students', 'students.php');  // Custom redirect
+```
+
+#### Require Specific Role
+```php
+requireRole(['admin', 'staff']);  // Only admin or staff
+```
+
+#### Get Role Information
+```php
+echo getRoleLabel('admin');    // "Administrator"
+echo getRoleColor('teacher');  // Tailwind color classes
+```
+
+### Permission-Protected Pages
+
+- **dashboard.php** - Session validation
+- **students.php** - `manage_students` permission required
+- **add-student.php** - `manage_students` permission required
+- **edit-student.php** - `manage_students` permission required
+- **users.php** - `manage_users` permission required
+- **add-user.php** - `manage_users` permission required
+- **edit-user.php** - `manage_users` permission required
+
+### Creating Permission-Protected Features
+
+Add permission check at the top of any page:
+
+```php
+<?php
+require_once 'config.php';
+
+if (!isAuthenticated()) {
+    header('Location: login.php');
+    exit;
+}
+
+// Redirect unauthorized users
+requirePermission('manage_courses');
+
+// Rest of your logic...
+?>
+```
+
+### Dynamic UI Based on Role
+
+Show/hide UI elements based on permissions:
+
+```php
+<?php if (hasPermission('manage_users')): ?>
+    <a href="users.php" class="...">Users & Roles</a>
+<?php endif; ?>
+```
+
+### User Statuses
+
+Users can have three statuses affecting their access:
+- `active` - Can login and access the platform
+- `inactive` - Cannot login
+- `suspended` - Temporarily blocked from access
 
 ### Adding Database Tables
 

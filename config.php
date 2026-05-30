@@ -1,5 +1,6 @@
 <?php
 session_start();
+require_once 'rbac.php';
 
 define('DB_HOST', $_ENV['DB_HOST'] ?? 'localhost');
 define('DB_NAME', $_ENV['DB_NAME'] ?? 'edubridge_uganda');
