@@ -266,3 +266,26 @@ mix.lock
 *.swo
 \#*#
 .#*
+
+# ==========================================
+# PHP & Composer
+# ==========================================
+vendor/
+composer.lock
+php-cs-fixer.cache
+.php-version
+.php-cs-fixer.php
+
+# ==========================================
+# EduBridge Uganda Uploads & Sessions
+# ==========================================
+uploads/
+public/uploads/
+sessions/
+tmp/
+
+# ==========================================
+# Local Configuration
+# ==========================================
+.env
+.env.local
